@@ -15,6 +15,14 @@ Benedict's explicit approval.
 
 ## Decisions/checks before public release
 
+**Open portability finding:** the strict embedding regression check passes on
+the Mac reference host and fails on Linux x86_64, including when using identical
+saved features and matched graph optimisation settings. The CI check remains
+red rather than widening its tolerance to hide the difference. Investigate the
+responsible arithmetic/kernel differences and their downstream accuracy impact,
+or explicitly narrow the validated runtime scope before public release. See
+`docs/CPU_PORTABILITY.md` and `results/cpu_portability.json`.
+
 1. Review the model card and confirm this is presented as an embedding research
    preview, with no species head or completed MCU firmware implied.
 2. Review upstream attribution and checkpoint variant. The source bytes match

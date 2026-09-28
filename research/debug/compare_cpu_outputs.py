@@ -1,4 +1,4 @@
-"""Temporary targeted portability probe; not a benchmark."""
+"""Compare CPU outputs for an open portability finding; not an accuracy benchmark."""
 import json
 from pathlib import Path
 import platform
@@ -7,14 +7,14 @@ import sys
 import numpy as np
 import onnxruntime as ort
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from perch_int8 import log_mel
 
 fixture = np.load(ROOT / "synthetic_reference.npz")
-basic_reference = np.load(ROOT / "tools/basic_reference.npz")
+basic_reference = np.load(ROOT / "research/debug/basic_reference.npz")
 matrix = np.load(ROOT / "perch2_mel_matrix.npy")
-print('[DEBUG-portability]', platform.platform(), 'ORT', ort.__version__)
+print('PORTABILITY', platform.platform(), 'ORT', ort.__version__)
 for name, level in [('all', ort.GraphOptimizationLevel.ORT_ENABLE_ALL),
                     ('basic', ort.GraphOptimizationLevel.ORT_ENABLE_BASIC),
                     ('disabled', ort.GraphOptimizationLevel.ORT_DISABLE_ALL)]:
@@ -31,6 +31,6 @@ for name, level in [('all', ort.GraphOptimizationLevel.ORT_ENABLE_ALL),
                 ('numpy_frontend_vs_basic', log_mel(fixture['audio'][i], matrix), basic_reference['audio'][i])]:
             actual = session.run(['embedding'], {'mel': mel})[0][0]
             cosine = float(np.dot(actual, expected) / np.linalg.norm(actual) / np.linalg.norm(expected))
-            print('[DEBUG-portability]', json.dumps({'level': name, 'input': source, 'sample': i,
+            print('PORTABILITY', json.dumps({'level': name, 'input': source, 'sample': i,
                   'cosine': cosine, 'max_error': float(np.max(np.abs(actual-expected))),
                   'relative_l2': float(np.linalg.norm(actual-expected)/np.linalg.norm(expected))}))

@@ -18,6 +18,13 @@ model-index:
 
 **Private review candidate — not yet approved for public release.**
 
+**Open review finding:** the Mac inference checks pass, but the strict embedding
+parity check fails on Linux x86_64. Identical saved input features also differ
+between hosts; this is not solely an audio-frontend difference. The failing
+check is retained. See [CPU portability](docs/CPU_PORTABILITY.md) before relying
+on cross-platform numerical agreement or the historical accuracy figures on a
+new runtime/target.
+
 A **12.3 MB statically quantised Perch 2.0 embedding backbone** for experiments
 with INT8 accelerators. It converts raw log-mel features into 1,536-dimensional
 embeddings. This repository also supplies a small NumPy audio frontend and an
@@ -66,8 +73,9 @@ the original samples at 32 kHz, changing both duration and frequency. This
 matches the time-expansion approach used in the historical bats evaluation;
 it is not a promise that arbitrary bat/rodent recordings will classify well.
 
-The Hugging Face snapshot contains the same quickstart files. Its model page
-will be cross-linked here once the private upload has been verified.
+The [private Hugging Face model page](https://huggingface.co/BenedictCarling/perch2-int8)
+contains the same quickstart files. The full research code and tests live in
+the GitHub repository.
 
 ## Model interface and frontend
 

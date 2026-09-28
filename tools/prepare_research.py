@@ -39,6 +39,9 @@ def main():
     import csv
     with args.classes.open() as f:
         rows = list(csv.DictReader(f))
+    expected_classes = manifest["source_checkpoint_files"]["assets/perch_v2_ebird_classes.csv"]
+    if hashlib.sha256(args.classes.read_bytes()).hexdigest() != expected_classes:
+        raise SystemExit("Class CSV does not match the verified original class order")
     if len(rows) != 14795 or not rows or "ebird2021" not in rows[0]:
         raise SystemExit("Expected 14,795 original-order classes with an ebird2021 column")
     destination = ROOT / "research/src"
