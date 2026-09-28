@@ -163,7 +163,7 @@ regression, window handling and resampling. Synthetic expected features come
 from the independent PyTorch direct-DFT frontend used in the research code.
 During release preparation the NumPy frontend was also checked against all
 64 historical SavedModel reference clips: maximum absolute log-mel error
-**4.67 × 10⁻⁵**, below the 10⁻³ tolerance. The recordings are not redistributed.
+**4.66 × 10⁻⁵**, below the 10⁻³ tolerance. The recordings are not redistributed.
 
 The supplied INT8 graph is byte-identical to the historical benchmark graph
 after adding explicit zero-valued Pad inputs for compiler compatibility.
