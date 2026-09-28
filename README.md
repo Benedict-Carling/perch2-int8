@@ -18,18 +18,20 @@ model-index:
 
 **Private review candidate — not yet approved for public release.**
 
-**Open review finding:** the Mac inference checks pass, but the strict embedding
-parity check fails on Linux x86_64. Identical saved input features also differ
-between hosts; this is not solely an audio-frontend difference. The failing
-check is retained. See [CPU portability](docs/CPU_PORTABILITY.md) before relying
-on cross-platform numerical agreement or the historical accuracy figures on a
-new runtime/target.
+**Open numerical portability finding:** macOS arm64 and Linux x86_64 produce
+measurably different embeddings from identical saved features. Linux inference
+and the release checks pass, but this does not establish cross-platform parity
+or Linux task accuracy. See [CPU portability](docs/CPU_PORTABILITY.md) before
+relying on historical accuracy figures on another runtime or target.
 
-A **12.3 MB statically quantised Perch 2.0 embedding backbone** for experiments
-with INT8 accelerators. It converts raw log-mel features into 1,536-dimensional
-embeddings. This repository also supplies a small NumPy audio frontend and an
-ONNX Runtime example, so you can use the embeddings on a computer without
-TensorFlow or PyTorch.
+A **12.3 MB statically quantised INT8 Perch 2.0 embedding backbone, with
+float32 input and output**. It converts float32 raw log-mel features into
+float32, 1,536-dimensional embeddings. The quantised weights and activations
+target INT8 execution; the actual operations placed on integer kernels depend
+on the runtime or compiler. This repository also supplies a small NumPy audio
+frontend and an ONNX Runtime example, so you can use the embeddings on a
+computer without TensorFlow or PyTorch. The output embedding itself is
+float32, not INT8.
 
 This is a community derivative by Benedict Carling / Alauda Audio, not an
 official Google release. The original model is
@@ -54,10 +56,12 @@ python perch_int8.py example.wav --out outputs/example.npy
 ```
 
 The supplied WAV is a synthetic five-second chirp, not a wildlife recording.
-The command writes a finite float32 array of shape **`(1, 1536)`**. Run the same
-command with your own WAV or FLAC to obtain one embedding per five-second
-window. Channels are averaged; ordinary audio is resampled to 32 kHz; the
-last incomplete window is zero-padded. There is no automatic gain normalisation.
+The command writes a finite float32 embedding array of shape **`(1, 1536)`**;
+float32 output does not mean the backbone weights and activations are float32.
+Run the same command with your own WAV or FLAC to obtain one embedding per
+five-second window. Channels are averaged; ordinary audio is resampled to 32
+kHz; the last incomplete window is zero-padded. There is no automatic gain
+normalisation.
 
 ```python
 from perch_int8 import PerchINT8, load_audio
@@ -101,7 +105,11 @@ in INT8.
 ## Recorded evaluation
 
 These are **historical experiment results**, packaged with their JSON reports;
-the full datasets were not rerun during release preparation. The FP32 control
+the full datasets were not rerun during release preparation. The scores in the
+tables are rounded arithmetic averages over the values in the checked-in JSON
+reports. Those aggregates are verifiable from this checkout, but the original
+evaluations are not fully reproducible from a clean checkout without the
+external datasets, upstream Perch head and calibration inputs. The FP32 control
 and INT8 arm use the same evaluation head and protocol. See
 [evaluation details](docs/EVALUATION.md) and [reproduction status](research/README.md).
 
