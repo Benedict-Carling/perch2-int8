@@ -1,0 +1,23 @@
+{
+  "model": "n6_divsmall_raw_asym.onnx",
+  "returncode": 0,
+  "epochs_total": 268,
+  "epochs_software": 2,
+  "npu_fraction": 0.9925,
+  "fp_weights": 11708033,
+  "fp_activations": 7352784,
+  "fp_kernel_flash": null,
+  "fp_kernel_ram": null,
+  "pools_used": {
+    "hyperRAM": 4517856,
+    "octoFlash": 11708033,
+    "cpuRAM2_npuRAM3_npuRAM4_npuRAM5_npuRAM6": 2834928
+  },
+  "onchip_bytes": 2834928,
+  "psram_bytes": 4517856,
+  "flash_bytes": 11708033,
+  "onchip_within_limit": true,
+  "compiler_cycles": 156899652,
+  "compiler_cycle_ms_at_1ghz": 156.9,
+  "gate5_npu_pass": true
+}

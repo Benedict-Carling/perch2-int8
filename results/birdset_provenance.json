@@ -1,0 +1,79 @@
+{
+  "repo": "DBD-research-group/BirdSet",
+  "revision": "data",
+  "commit": "806ed2cda4ddcbe6efa194ccafff930aa0e557ce",
+  "files": {
+    "HSN/HSN_metadata_test_5s.parquet": {
+      "size": 206444,
+      "sha": "0f930d56b5d2c88e8cbcd6c4f3a279cc128b9c49096c9973fa83befafe6f6af9"
+    },
+    "HSN/HSN_test5s_shard_0001.tar.gz": {
+      "size": 480847180,
+      "sha": "d9cad20d781cb9958c73f3807a187df85db956324b9c07ae43ca330d811be62c"
+    },
+    "NBP/NBP_metadata_test_5s.parquet": {
+      "size": 22239,
+      "sha": "f6b3d4491d9342f6a79c56378534bdd508f02be28c1c9f4b854cb249ac3065b5"
+    },
+    "NBP/NBP_test5s_shard_0001.tar.gz": {
+      "size": 21065430,
+      "sha": "e8e88d0b4eb02cb0b732b9f96c1b680e128de3cb33c29ff8175961eca6bc8b9d"
+    },
+    "NES/NES_metadata_test_5s.parquet": {
+      "size": 432903,
+      "sha": "2e8d3ae978a399a5fb69cbbebd3dea20e051d207735f0302c7e7151b9199f444"
+    },
+    "NES/NES_metadata_test_5s_old.parquet": {
+      "size": 432896,
+      "sha": "1f5fa6d554b3f4bb5143cdeb5813ae51fcd30bb73abfbfdd779d6af51707228e"
+    },
+    "NES/NES_test5s_shard_0001.tar.gz": {
+      "size": 1056431340,
+      "sha": "1f3d37d97561ed068ae707ea3c82455bf6d5beed55e107242f17fa0468aa2625"
+    },
+    "PER/PER_metadata_test_5s.parquet": {
+      "size": 344574,
+      "sha": "247abec756445abef699517aaf8b4c316fd53320daf322f142bf5787aad0f31f"
+    },
+    "PER/PER_test5s_shard_0001.tar.gz": {
+      "size": 634508408,
+      "sha": "7a8c49a8efba332279548c53784b8bc9411ed27c9bc51b757bbcef3fd7784900"
+    },
+    "SNE/SNE_metadata_test_5s.parquet": {
+      "size": 465058,
+      "sha": "bd26ca6c5dacfa0335743edbbfb5f25f96ca3845bc1e620cf2dc8843b127facb"
+    },
+    "SNE/SNE_test5s_shard_0001.tar.gz": {
+      "size": 972331863,
+      "sha": "c555b9d597489684719d4f24be994dfb371c75010d7fc5dde7c2f3bddff2c176"
+    },
+    "SSW/SSW_metadata_test_5s.parquet": {
+      "size": 2876340,
+      "sha": "69b9069a087c1e0cdb1aabadb2d0d2173aa2a653804714e60ba5a2336f4161fa"
+    },
+    "SSW/SSW_test5s_shard_0001.tar.gz": {
+      "size": 2147751052,
+      "sha": "ab6067fa641965807467388085f75e734f1764ff132ee7086575080ee985a8f2"
+    },
+    "SSW/SSW_test5s_shard_0002.tar.gz": {
+      "size": 2148360218,
+      "sha": "50ecab5290283a26e01b72e05098f5d886d54ff1e8da845bf1baa0e224045c60"
+    },
+    "SSW/SSW_test5s_shard_0003.tar.gz": {
+      "size": 2148263960,
+      "sha": "20e6f26ce1a8bccaf0b78a40c59a3f54d8cb7330cf0b0acf9ebb3607aa051138"
+    },
+    "SSW/SSW_test5s_shard_0004.tar.gz": {
+      "size": 1983598815,
+      "sha": "9f7d7ef3d93ba70b99250130613614b47cbcd2f3c82b986d582a0eb87087afd2"
+    },
+    "UHH/UHH_metadata_test_5s.parquet": {
+      "size": 589488,
+      "sha": "73eb8bf5a3ece23601c68172a51b0c000dd9ee905ba15774fefc42e43463bb74"
+    },
+    "UHH/UHH_test5s_shard_0001.tar.gz": {
+      "size": 1515337484,
+      "sha": "cf03eb7be035867085b88c6e57d803e5cfbc6c6e775478f51631d90b227aa8d4"
+    }
+  }
+}

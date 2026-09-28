@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this work, cite this software and the original Perch 2.0 paper."
+title: "Perch 2.0 INT8 backbone"
+type: software
+authors:
+  - family-names: Carling
+    given-names: Benedict
+year: 2026
+version: 0.1.0-rc.1
+license: Apache-2.0
+repository-code: "https://github.com/Benedict-Carling/perch2-int8"
+references:
+  - type: article
+    title: "Perch 2.0: The Bittern Lesson for Bioacoustics"
+    year: 2025
+    doi: 10.48550/arXiv.2508.04665
+    authors:
+      - family-names: van Merriënboer
+        given-names: Bart
+      - family-names: Dumoulin
+        given-names: Vincent
+      - family-names: Hamer
+        given-names: Jenny
+      - family-names: Harrell
+        given-names: Lauren
+      - family-names: Burns
+        given-names: Andrea
+      - family-names: Denton
+        given-names: Tom

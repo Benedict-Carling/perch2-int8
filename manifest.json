@@ -1,0 +1,65 @@
+{
+  "release_candidate": "0.1.0-rc.1",
+  "files": {
+    "perch2_backbone_int8.onnx": {
+      "sha256": "0d3861c911723462306ec1a82f832c17bca3fd58de5bcd937014affaefda7e78",
+      "bytes": 12303480
+    },
+    "perch2_backbone_fp32.onnx": {
+      "sha256": "dde5b46c05275d13fb1d7e274ff4efe8ebb302ed1afd736222a603e2fd57c131",
+      "bytes": 42766652
+    },
+    "perch2_mel_matrix.npy": {
+      "sha256": "41f2e3237e5ad411fd0eaa7b40c404499993d9acc5c784bfa7c217272400d66a",
+      "bytes": 262784
+    },
+    "synthetic_reference.npz": {
+      "sha256": "436602f71572543f5156a03df3772cb9a4b5cb318d226ad69e9e2fb3b6471750",
+      "bytes": 1466727
+    },
+    "example.wav": {
+      "sha256": "d6471cedfafabd8b214700b14aa0d6a29ba7e33df2d1ee2288cd29a9ce0cc0bb",
+      "bytes": 640080
+    }
+  },
+  "source_checkpoint_files": {
+    "variables/variables.data-00000-of-00001": "69571ece6a9229bd339af37f935821b9e3f53869298bd9ad97135a0c87efcea1",
+    "variables/variables.index": "29c49db4f95727b8c4c22522cf8bb8c77e2eb930ce5b5b43e3a00317d479da1d",
+    "assets/perch_v2_ebird_classes.csv": "861aef71b679d8dcf07c0c71375188c46b680bd808c61a539f254dc21319bcc9"
+  },
+  "source_checkpoint": {
+    "origin": "Google Perch 2.0, downloaded from the cgeorgiaw/Perch Hugging Face mirror",
+    "saved_model_sha256": "d28faa13aa61eb369b9d8d66d483186da65b15d9220bb051c0003553ecae2766",
+    "paper_variant": "unresolved",
+    "mirror_repo": "cgeorgiaw/Perch",
+    "mirror_revision": "c3c3c816976a6c1bb75140b8fbaef7397a6f708f",
+    "remote_identity_verified": true
+  },
+  "calibration": {
+    "tensor_sha256": "712160ed703357964a95eaba00039db742bc8ba9de933d2c8dd3287e1182b801",
+    "tensor_shape": [
+      192,
+      500,
+      128
+    ],
+    "frontend": "raw log-mel",
+    "percentile": 99.99,
+    "activation": "signed asymmetric int8",
+    "weights": "per-channel int8",
+    "redistributed": false
+  },
+  "historical_model": {
+    "sha256": "2c77060da1e49c233972f24b90ee3ad2db13db218fb372f0407ddae227d84857",
+    "change_to_release": "4 explicit zero scalar Pad inputs; resulting graph byte-identical to release"
+  },
+  "historical_reports": {
+    "birdset_provenance.json": "72d6dda785144d11e7125d33b715d6ae9eebff07df51ff1f657868c85ef9f421",
+    "n6_beans.json": "626f61e63ff853da3fbca9466acf18ec497d450513628d0f34c06dc2570419ca",
+    "n6_birdset_HSN_NBP.json": "1d0f6f22214e19ec64849c300596ae383db5c4e60229ba8bc410c827644433b2",
+    "n6_birdset_SNE_PER.json": "e76a5d045046ad9a0418a969b0d5a6e3580e843b61b4548a0aa510969e505269",
+    "n6_birdset_SSW.json": "42ea3139770ffa29454bfb54f8cefb9c3fa5b5678f6bc42bedbe08f7704c8108",
+    "n6_birdset_UHH_NES.json": "cf41ac7a71504f558428fffae7f60a5a1de12d8214736c6bd5e367a63d178255",
+    "n6_compile_n6_divsmall_raw_asym.json": "a353f9178564d89c86c4b6a4cbb837e327a5cb79104a88c49da8adb5c807bd94",
+    "n6_conformance.json": "e3f12c8d4c55629fe4752bb68179dc7429d7b6d78f920d8c7fffa0307f8b9643"
+  }
+}
