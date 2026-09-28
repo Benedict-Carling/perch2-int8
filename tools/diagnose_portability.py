@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 from perch_int8 import log_mel
 
 fixture = np.load(ROOT / "synthetic_reference.npz")
+basic_reference = np.load(ROOT / "tools/basic_reference.npz")
 matrix = np.load(ROOT / "perch2_mel_matrix.npy")
 print('[DEBUG-portability]', platform.platform(), 'ORT', ort.__version__)
 for name, level in [('all', ort.GraphOptimizationLevel.ORT_ENABLE_ALL),
@@ -25,7 +26,9 @@ for name, level in [('all', ort.GraphOptimizationLevel.ORT_ENABLE_ALL),
     for i in range(len(fixture['audio'])):
         for source, mel, expected in [
                 ('fixed_features', fixture['log_mel'][i][None, None], fixture['embedding_direct_dft'][i]),
-                ('numpy_frontend', log_mel(fixture['audio'][i], matrix), fixture['embedding'][i])]:
+                ('numpy_frontend', log_mel(fixture['audio'][i], matrix), fixture['embedding'][i]),
+                ('fixed_features_vs_basic', fixture['log_mel'][i][None, None], basic_reference['fixed'][i]),
+                ('numpy_frontend_vs_basic', log_mel(fixture['audio'][i], matrix), basic_reference['audio'][i])]:
             actual = session.run(['embedding'], {'mel': mel})[0][0]
             cosine = float(np.dot(actual, expected) / np.linalg.norm(actual) / np.linalg.norm(expected))
             print('[DEBUG-portability]', json.dumps({'level': name, 'input': source, 'sample': i,
