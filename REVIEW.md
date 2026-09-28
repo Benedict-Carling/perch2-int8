@@ -15,13 +15,14 @@ Benedict's explicit approval.
 
 ## Decisions/checks before public release
 
-**Open portability finding:** the strict embedding regression check passes on
-the Mac reference host and fails on Linux x86_64, including when using identical
-saved features and matched graph optimisation settings. The CI check remains
-red rather than widening its tolerance to hide the difference. Investigate the
-responsible arithmetic/kernel differences and their downstream accuracy impact,
-or explicitly narrow the validated runtime scope before public release. See
-`docs/CPU_PORTABILITY.md` and `results/cpu_portability.json`.
+**Open numerical portability finding:** macOS arm64 and Linux x86_64 produce
+measurably different embeddings from identical saved features under ONNX Runtime
+1.23.2. The release checks now use the Mac golden only on its generating host;
+Linux CI checks valid, repeatable inference. This resolves the misleading red
+CI gate, but does not establish cross-platform parity or task accuracy on Linux.
+Compare representative labelled evaluations on the intended deployment hosts
+before making downstream accuracy claims. See `docs/CPU_PORTABILITY.md` and
+`results/cpu_portability.json`.
 
 1. Review the model card and confirm this is presented as an embedding research
    preview, with no species head or completed MCU firmware implied.
