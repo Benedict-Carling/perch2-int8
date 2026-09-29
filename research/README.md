@@ -1,10 +1,12 @@
 # Research recipe and reproduction status
 
-The runtime quickstart is self-contained. This directory holds the historical
-research scripts; **full end-to-end reproduction is still under review**.
-The original 192-window calibration corpus and third-party benchmark audio are
-not bundled. Checkpoint bytes are pinned to the verified mirror revision in
-`manifest.json`; correspondence to the paper variants remains unresolved.
+The runtime quickstart is self-contained. This directory holds the research
+scripts and a pinned end-to-end BirdSet reproduction command. Benchmark audio
+is downloaded when requested and is not bundled. The original 192-window
+calibration corpus is not bundled: it is needed to regenerate the exact INT8
+weights, but not to evaluate the released FP32 and INT8 ONNX files.
+Checkpoint bytes are pinned to the verified mirror revision in `manifest.json`;
+correspondence to the paper variants remains unresolved.
 
 ## Quantise a new calibration set
 
@@ -48,23 +50,42 @@ python tools/prepare_research.py --savedmodel outputs/perch2_savedmodel \
   --classes outputs/perch2_savedmodel/assets/perch_v2_ebird_classes.csv
 ```
 
-Download BirdSet `test_5s` metadata/shards to `research/src/birdset/<dataset>/`.
-The recorded data revision is `806ed2cda4ddcbe6efa194ccafff930aa0e557ce` in
-[`DBD-research-group/BirdSet`](https://huggingface.co/datasets/DBD-research-group/BirdSet/tree/data).
-Per-file checksums are in `results/birdset_provenance.json`.
-BEANS archives belong in `research/src/beans/`; the script documents expected
-archive names and annotation layouts. HumBugDB additionally needs metadata.
-Dependencies and downloads for these full evaluations have not yet been
-exercised in a fresh environment.
+The BirdSet comparison uses the same seven `test_5s` soundscape subsets as the
+Perch 2.0 benchmark (PER, NES, UHH, HSN, NBP, SSW, SNE). The data snapshot is
+pinned to commit `806ed2cda4ddcbe6efa194ccafff930aa0e557ce` in
+[`DBD-research-group/BirdSet`](https://huggingface.co/datasets/DBD-research-group/BirdSet/tree/806ed2cda4ddcbe6efa194ccafff930aa0e557ce),
+and every downloaded file is checked against `results/birdset_provenance.json`.
+The metadata supplies the label names; the evaluation no longer requests the
+missing, unpinned `classes.py` file. The runner downloads, verifies, evaluates,
+and removes one subset at a time to limit disk use:
 
-The corrected BirdSet commands are separate pretrained-head runs:
+```bash
+python tools/run_birdset_reproduction.py
+```
+
+It writes fresh paired FP32/INT8 results to `outputs/birdset_rerun.json`.
+`--datasets NBP` runs one small subset; `--keep-data` retains verified files;
+`--limit N` is for pipeline smoke tests only and must not be used for reported
+benchmark scores. This evaluates the checked-in model artifacts with the
+original Perch 2.0 head. It does not recalibrate the INT8 model. Compare a fresh
+run with the checked-in local reports; the paper's rounded metrics are context,
+not exact targets, because the precise checkpoint variant and scoring details
+used for its tables are not fully resolved here.
+
+In the validation run for this release, full-data NBP, PER, NES, UHH and HSN
+scores matched their historical JSON reports to within `1e-7` on every metric.
+SSW and SNE were not rerun to completion, so the seven-subset aggregate remains
+the checked-in historical aggregate rather than a newly completed full rerun.
+
+BEANS uses the same public task datasets, but the repository's four selected
+tasks and local split/probe implementation are not the paper's complete
+12-task, official-protocol evaluation. BEANS archives belong in
+`research/src/beans/`; the script documents expected archive names and layouts.
+The following commands reproduce the repository's local BEANS procedure, not
+the paper's exact evaluation:
 
 ```bash
 cd research/src
-python n6_birdset.py --datasets PER,NES,UHH,HSN,NBP,SSW,SNE --protocol pre \
-  --backbone ../../perch2_backbone_fp32.onnx --frontend raw --tag fp32 --out ../../outputs/birdset.json
-python n6_birdset.py --datasets PER,NES,UHH,HSN,NBP,SSW,SNE --protocol pre \
-  --backbone ../../perch2_backbone_int8.onnx --frontend raw --tag int8_divsmall_raw_asym --out ../../outputs/birdset.json
 python n6_beans.py --datasets watkins,dogs,humbugdb \
   --models 'fp32=../../perch2_backbone_fp32.onnx=raw;int8_divsmall_raw_asym=../../perch2_backbone_int8.onnx=raw' \
   --out ../../outputs/beans.json
@@ -73,9 +94,7 @@ python n6_beans.py --datasets bats --no-resample \
   --out ../../outputs/beans.json
 ```
 
-Do not pass `--models` to BirdSet's default `pre` protocol: that option belongs
-to embedding extraction, a different evaluation mode. Outputs above are
-separate from the immutable historical reports in `results/`.
+Outputs are separate from the immutable historical reports in `results/`.
 
 `n6_conformance.py` requires a local SavedModel reference NPZ containing audio,
 spectrograms and embeddings. This historical check is separate from the public

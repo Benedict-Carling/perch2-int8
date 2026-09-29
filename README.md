@@ -104,13 +104,14 @@ in INT8.
 
 ## Recorded evaluation
 
-These are **historical experiment results**, packaged with their JSON reports;
-the full datasets were not rerun during release preparation. The scores in the
-tables are rounded arithmetic averages over the values in the checked-in JSON
-reports. Those aggregates are verifiable from this checkout, but the original
-evaluations are not fully reproducible from a clean checkout without the
-external datasets, upstream Perch head and calibration inputs. The FP32 control
-and INT8 arm use the same evaluation head and protocol. See
+These are **historical experiment results**, packaged with their JSON reports.
+The score averages are rounded arithmetic means over those reports. BirdSet can
+be rerun end to end with the pinned public test data, verified Perch 2.0
+checkpoint, and checked-in FP32/INT8 models; calibration inputs are required to
+regenerate the exact INT8 weights, not to evaluate them. BEANS uses a local
+split/probe recipe and is not an exact reproduction of the paper's full
+12-task protocol. The FP32 control and INT8 arm share the same evaluation head
+and protocol. See
 [evaluation details](docs/EVALUATION.md) and [reproduction status](research/README.md).
 
 BirdSet: macro-average across seven soundscapes, 317,732 five-second segments.

@@ -3,26 +3,15 @@ from __future__ import annotations
 import argparse
 import io
 import json
-import re
 import tarfile
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent
 BIRDSET = ROOT / "birdset"
-
-CLASS_LIST = {
-    "HSN": "BIRD_NAMES_HIGH_SIERRAS",
-    "NES": "BIRD_NAMES_COLUMBIA_COSTA_RICA",
-    "PER": "BIRD_NAMES_AMAZON_BASIN",
-    "POW": "BIRD_NAMES_POWDERMILL_NATURE",
-    "SNE": "BIRD_NAMES_SIERRA_NEVADA",
-    "SSW": "BIRD_NAMES_SAPSUCKER",
-    "UHH": "BIRD_NAMES_HAWAII",
-    "NBP": "BIRD_NAMES_NIPS4BPLUS",
-}
 
 PAPER_DATASETS = ["PER", "NES", "UHH", "HSN", "NBP", "SSW", "SNE"]
 
@@ -37,15 +26,15 @@ PUBLISHED = {
 
 
 def species_list(ds: str) -> list[str]:
-    from huggingface_hub import hf_hub_download
-    p = hf_hub_download("DBD-research-group/BirdSet", "classes.py",
-                        repo_type="dataset")
-    src = Path(p).read_text()
-    name = CLASS_LIST[ds]
-    m = re.search(rf"^{name}\s*=\s*\[(.*?)\]", src, re.S | re.M)
-    if not m:
-        raise SystemExit(f"{name} not found in classes.py")
-    return re.findall(r"['\"]([^'\"]+)['\"]", m.group(1))
+    """Return labels present in the pinned test metadata.
+
+    The BirdSet snapshot pinned by this project does not contain the historical
+    ``classes.py`` this evaluation used to fetch from the moving dataset head.
+    The metadata is already required for evaluation and gives the exact labels
+    used by these test examples.
+    """
+    labels, _ = load_split(ds)
+    return sorted({str(label) for row in labels.values() for label in row})
 
 
 def perch_classes() -> list[str]:
@@ -150,12 +139,18 @@ def run_pre(ds: str, model: str, limit: int, threads: int,
 
     Y, t0 = [], time.time()
     S = {k: [] for k in heads} if heads else {"_": []}
+    # The FP32 and INT8 graphs share the same mel features. Running their
+    # independent ONNX sessions concurrently uses available CPU cores and
+    # avoids making each paired example wait for both serial inference calls.
+    pool = ThreadPoolExecutor(max_workers=len(heads)) if heads else None
     for name, x, sr, labs in iter_audio(shards, labels, limit):
         w = fit_5s(x, sr)[None]
         if heads:
             mel = next(iter(heads.values())).mel(w[0])
-            for tag, h in heads.items():
-                S[tag].append(h.logits_from_mel(mel)[cols])
+            futures = {tag: pool.submit(h.logits_from_mel, mel)
+                       for tag, h in heads.items()}
+            for tag, result in futures.items():
+                S[tag].append(result.result()[cols])
         else:
             S["_"].append(sess.run(None, {inp: w})[0][0][cols])
         y = np.zeros(len(kept), np.int8)
@@ -166,6 +161,8 @@ def run_pre(ds: str, model: str, limit: int, threads: int,
         if len(Y) % 2000 == 0:
             r = len(Y) / (time.time() - t0)
             print(f"    {len(Y):,} segments  {r:.1f}/s", flush=True)
+    if pool:
+        pool.shutdown()
     Y = np.stack(Y)
     return {k: metrics(Y, np.stack(v)) for k, v in S.items()}
 
