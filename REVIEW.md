@@ -33,9 +33,12 @@ before making downstream accuracy claims. See `docs/CPU_PORTABILITY.md` and
 3. Review calibration provenance before distributing calibration audio or
    derived features. These are deliberately excluded from this release.
    Exact end-to-end calibration-set recreation is not yet packaged.
-4. Exercise the full benchmark setup from upstream downloads before advertising
-   one-command reproduction of the historical tables. The release tests are
-   inference/packaging checks, not this full research rerun.
+4. A pinned one-command BirdSet runner is now available. Full-data NBP, PER,
+   NES, UHH and HSN reruns matched the historical reports within `1e-7` on every
+   metric. SSW and SNE were not rerun to completion, so the seven-subset
+   aggregate remains historical and must not be described as a newly completed
+   end-to-end rerun. The release tests remain inference/packaging checks, not
+   substitutes for this benchmark evaluation.
 5. Review a simple downstream classifier example on an appropriately licensed
    labelled dataset before making task-specific performance claims.
 
