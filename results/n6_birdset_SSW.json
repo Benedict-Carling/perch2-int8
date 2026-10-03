@@ -1,0 +1,28 @@
+{
+  "fp32": {
+    "SSW": {
+      "roc_auc": 0.975714801518539,
+      "cmap": 0.47307048229463,
+      "top1": 0.7883917406289078,
+      "n_classes_scored": 81,
+      "n_segments": 205200,
+      "n_segments_labelled": 65574,
+      "published_roc_auc": 0.973,
+      "published_cmap": 0.469,
+      "published_top1": 0.789
+    }
+  },
+  "int8_divsmall_raw_asym": {
+    "SSW": {
+      "roc_auc": 0.9703479017501975,
+      "cmap": 0.43887317086684674,
+      "top1": 0.7515173696892061,
+      "n_classes_scored": 81,
+      "n_segments": 205200,
+      "n_segments_labelled": 65574,
+      "published_roc_auc": 0.973,
+      "published_cmap": 0.469,
+      "published_top1": 0.789
+    }
+  }
+}

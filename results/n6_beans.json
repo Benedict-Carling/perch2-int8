@@ -1,0 +1,54 @@
+{
+  "fp32": {
+    "watkins": {
+      "accuracy": 0.8997050147492626,
+      "n_test": 339,
+      "n_classes": 31,
+      "published_lp": 0.885
+    },
+    "dogs": {
+      "accuracy": 0.9784172661870504,
+      "n_test": 139,
+      "n_classes": 10,
+      "published_lp": 0.964
+    },
+    "bats": {
+      "accuracy": 0.781,
+      "n_test": 2000,
+      "n_classes": 10,
+      "published_lp": 0.766
+    },
+    "humbugdb": {
+      "accuracy": 0.8101129639591178,
+      "n_test": 1859,
+      "n_classes": 14,
+      "published_lp": 0.762
+    }
+  },
+  "int8_divsmall_raw_asym": {
+    "watkins": {
+      "accuracy": 0.8849557522123894,
+      "n_test": 339,
+      "n_classes": 31,
+      "published_lp": 0.885
+    },
+    "dogs": {
+      "accuracy": 0.9496402877697842,
+      "n_test": 139,
+      "n_classes": 10,
+      "published_lp": 0.964
+    },
+    "bats": {
+      "accuracy": 0.7895,
+      "n_test": 2000,
+      "n_classes": 10,
+      "published_lp": 0.766
+    },
+    "humbugdb": {
+      "accuracy": 0.8106508875739645,
+      "n_test": 1859,
+      "n_classes": 14,
+      "published_lp": 0.762
+    }
+  }
+}

@@ -1,0 +1,599 @@
+{
+  "status": "known difference; see docs/CPU_PORTABILITY.md",
+  "date": "2026-09-28",
+  "runtime": "onnxruntime 1.23.2 CPU",
+  "reference": "macOS arm64",
+  "tested_host": "GitHub-hosted Ubuntu x86_64; CPU model not captured",
+  "scope": "four synthetic signals, not a labelled accuracy benchmark",
+  "finding": "Cross-host differences persist with fixed saved features and matching graph optimisation levels. Exact responsible kernels are not identified.",
+  "runs": [
+    {
+      "run": "36449303539",
+      "url": "https://github.com/Benedict-Carling/perch2-int8/actions/runs/36449303539",
+      "comparisons": [
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.9992857575416565,
+          "max_error": 0.0164787620306015,
+          "relative_l2": 0.03824938088655472
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992421865463257,
+          "max_error": 0.0225994810461998,
+          "relative_l2": 0.03919735550880432
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.9992857575416565,
+          "max_error": 0.0164787620306015,
+          "relative_l2": 0.03824938088655472
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992421865463257,
+          "max_error": 0.0225994810461998,
+          "relative_l2": 0.03919735550880432
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 1.0,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961958831652737e-08
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.9992857575416565,
+          "max_error": 0.0164787620306015,
+          "relative_l2": 0.03824938088655472
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992421865463257,
+          "max_error": 0.0225994810461998,
+          "relative_l2": 0.03919735550880432
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9977904558181763,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.9979960918426514,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        }
+      ]
+    },
+    {
+      "run": "36449647322",
+      "url": "https://github.com/Benedict-Carling/perch2-int8/actions/runs/36449647322",
+      "comparisons": [
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 0.9936038851737976,
+          "max_error": 0.03013262152671814,
+          "relative_l2": 0.11332494020462036
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 0.9936038851737976,
+          "max_error": 0.03013262152671814,
+          "relative_l2": 0.11332494020462036
+        },
+        {
+          "level": "all",
+          "input": "fixed_features_vs_basic",
+          "sample": 0,
+          "cosine": 0.9936038851737976,
+          "max_error": 0.03013262152671814,
+          "relative_l2": 0.11332494020462036
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 0,
+          "cosine": 0.9936038851737976,
+          "max_error": 0.03013262152671814,
+          "relative_l2": 0.11332494020462036
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.999249279499054,
+          "max_error": 0.019303753972053528,
+          "relative_l2": 0.03875744715332985
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992321133613586,
+          "max_error": 0.018362082540988922,
+          "relative_l2": 0.039231207221746445
+        },
+        {
+          "level": "all",
+          "input": "fixed_features_vs_basic",
+          "sample": 1,
+          "cosine": 0.9991715550422668,
+          "max_error": 0.019303739070892334,
+          "relative_l2": 0.04087061062455177
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 1,
+          "cosine": 0.999213695526123,
+          "max_error": 0.020716190338134766,
+          "relative_l2": 0.03965732827782631
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9979091286659241,
+          "max_error": 0.022599492222070694,
+          "relative_l2": 0.06464727222919464
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9979091286659241,
+          "max_error": 0.022599492222070694,
+          "relative_l2": 0.06464727222919464
+        },
+        {
+          "level": "all",
+          "input": "fixed_features_vs_basic",
+          "sample": 2,
+          "cosine": 0.9975345730781555,
+          "max_error": 0.04096156358718872,
+          "relative_l2": 0.07109515368938446
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 2,
+          "cosine": 0.9975345730781555,
+          "max_error": 0.04096156358718872,
+          "relative_l2": 0.07109515368938446
+        },
+        {
+          "level": "all",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.991049587726593,
+          "max_error": 0.030603468418121338,
+          "relative_l2": 0.13731908798217773
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.991049587726593,
+          "max_error": 0.030603468418121338,
+          "relative_l2": 0.13731908798217773
+        },
+        {
+          "level": "all",
+          "input": "fixed_features_vs_basic",
+          "sample": 3,
+          "cosine": 0.9929158687591553,
+          "max_error": 0.029190998524427414,
+          "relative_l2": 0.12098664790391922
+        },
+        {
+          "level": "all",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 3,
+          "cosine": 0.9929158687591553,
+          "max_error": 0.029190998524427414,
+          "relative_l2": 0.12098664790391922
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features_vs_basic",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.9992857575416565,
+          "max_error": 0.0164787620306015,
+          "relative_l2": 0.03824938088655472
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992421865463257,
+          "max_error": 0.0225994810461998,
+          "relative_l2": 0.03919735178351402
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features_vs_basic",
+          "sample": 1,
+          "cosine": 0.9991840124130249,
+          "max_error": 0.019774526357650757,
+          "relative_l2": 0.0405258908867836
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 1,
+          "cosine": 0.9992559552192688,
+          "max_error": 0.01930372416973114,
+          "relative_l2": 0.03860955312848091
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9977903962135315,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9977903962135315,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features_vs_basic",
+          "sample": 2,
+          "cosine": 0.9985477328300476,
+          "max_error": 0.024953603744506836,
+          "relative_l2": 0.0538843609392643
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 2,
+          "cosine": 0.9985477328300476,
+          "max_error": 0.024953603744506836,
+          "relative_l2": 0.0538843609392643
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.9979962110519409,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.9979962110519409,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "basic",
+          "input": "fixed_features_vs_basic",
+          "sample": 3,
+          "cosine": 0.9968146681785583,
+          "max_error": 0.020245373249053955,
+          "relative_l2": 0.07986309379339218
+        },
+        {
+          "level": "basic",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 3,
+          "cosine": 0.9968146681785583,
+          "max_error": 0.020245373249053955,
+          "relative_l2": 0.07986309379339218
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features_vs_basic",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 0,
+          "cosine": 0.9999998807907104,
+          "max_error": 2.9802322387695312e-08,
+          "relative_l2": 6.961957410567265e-08
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 1,
+          "cosine": 0.9992857575416565,
+          "max_error": 0.0164787620306015,
+          "relative_l2": 0.03824938088655472
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 1,
+          "cosine": 0.9992421865463257,
+          "max_error": 0.0225994810461998,
+          "relative_l2": 0.03919735178351402
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features_vs_basic",
+          "sample": 1,
+          "cosine": 0.9991840124130249,
+          "max_error": 0.019774526357650757,
+          "relative_l2": 0.0405258908867836
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 1,
+          "cosine": 0.9992559552192688,
+          "max_error": 0.01930372416973114,
+          "relative_l2": 0.03860955312848091
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 2,
+          "cosine": 0.9977903962135315,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 2,
+          "cosine": 0.9977903962135315,
+          "max_error": 0.030603498220443726,
+          "relative_l2": 0.06812695413827896
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features_vs_basic",
+          "sample": 2,
+          "cosine": 0.9985477328300476,
+          "max_error": 0.024953603744506836,
+          "relative_l2": 0.0538843609392643
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 2,
+          "cosine": 0.9985477328300476,
+          "max_error": 0.024953603744506836,
+          "relative_l2": 0.0538843609392643
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features",
+          "sample": 3,
+          "cosine": 0.9979962110519409,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend",
+          "sample": 3,
+          "cosine": 0.9979962110519409,
+          "max_error": 0.014124691486358643,
+          "relative_l2": 0.06330760568380356
+        },
+        {
+          "level": "disabled",
+          "input": "fixed_features_vs_basic",
+          "sample": 3,
+          "cosine": 0.9968146681785583,
+          "max_error": 0.020245373249053955,
+          "relative_l2": 0.07986309379339218
+        },
+        {
+          "level": "disabled",
+          "input": "numpy_frontend_vs_basic",
+          "sample": 3,
+          "cosine": 0.9968146681785583,
+          "max_error": 0.020245373249053955,
+          "relative_l2": 0.07986309379339218
+        }
+      ]
+    }
+  ]
+}

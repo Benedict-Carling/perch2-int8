@@ -1,0 +1,21 @@
+Perch 2.0 INT8 backbone
+Community derivative and release packaging by Benedict Carling, 2026.
+
+Based on Perch 2.0, developed by Google Research and distributed under
+Apache License 2.0. Original model:
+https://www.kaggle.com/models/google/bird-vocalization-classifier/
+Original source: https://github.com/google-research/perch
+Paper: https://arxiv.org/abs/2508.04665
+
+Perch 2.0: The Bittern Lesson for Bioacoustics
+Bart van Merriënboer, Vincent Dumoulin, Jenny Hamer, Lauren Harrell,
+Andrea Burns, Tom Denton.
+
+Changes include a PyTorch backbone reconstruction, static INT8 QDQ
+quantisation, explicit Pad constants for Neural-ART compatibility,
+a NumPy inference frontend and release examples/documentation.
+This is not an official Google or STMicroelectronics release.
+
+example.wav and synthetic_reference.npz contain procedurally generated
+signals, not third-party field recordings, and are covered by LICENSE.
+Benchmark recordings and calibration recordings are not redistributed.

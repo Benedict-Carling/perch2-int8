@@ -1,0 +1,22 @@
+{
+  "gate2_frontend": {
+    "max_abs_err": 4.9233436584472656e-05,
+    "mean_abs_err": 1.8414282010326133e-07,
+    "threshold": 0.001,
+    "pass": true
+  },
+  "gate1_backbone": {
+    "model": "perch2_backbone_n6_prep.onnx",
+    "n": 64,
+    "min_per_clip_cosine": 0.9999999999974294,
+    "mean_per_clip_cosine": 0.9999999999985874,
+    "threshold": 0.9999,
+    "pass": true
+  },
+  "golden": {
+    "file": "golden_frontend.npz",
+    "n": 8,
+    "tolerance": 0.001
+  },
+  "all_pass": true
+}

@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-28",
+  "reference": "Perch 2.0 SavedModel reference outputs (audio not included)",
+  "reference_sha256": "ab8a0b311115d253007d86b75a88de505638811b0f8c040db0d4f763e774a0b3",
+  "n_clips": 64,
+  "numpy_frontend_max_abs_error": 4.661083221435547e-05,
+  "tolerance": 0.001,
+  "pass": true,
+  "historical_int8_sha256": "2c77060da1e49c233972f24b90ee3ad2db13db218fb372f0407ddae227d84857",
+  "padfix_adds_explicit_zero_inputs": 4,
+  "padfix_output_byte_identical_to_release": true
+}

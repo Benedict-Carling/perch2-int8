@@ -1,0 +1,50 @@
+{
+  "fp32": {
+    "HSN": {
+      "roc_auc": 0.8979998013780153,
+      "cmap": 0.5270781055900139,
+      "top1": 0.6622652036451553,
+      "n_classes_scored": 21,
+      "n_segments": 12000,
+      "n_segments_labelled": 5377,
+      "published_roc_auc": 0.915,
+      "published_cmap": 0.533,
+      "published_top1": 0.659
+    },
+    "NBP": {
+      "roc_auc": 0.9317568714832009,
+      "cmap": 0.6583477727813286,
+      "top1": 0.7235621521335807,
+      "n_classes_scored": 51,
+      "n_segments": 539,
+      "n_segments_labelled": 539,
+      "published_roc_auc": 0.933,
+      "published_cmap": 0.661,
+      "published_top1": 0.724
+    }
+  },
+  "int8_divsmall_raw_asym": {
+    "HSN": {
+      "roc_auc": 0.8974988705143796,
+      "cmap": 0.5057861069289723,
+      "top1": 0.661521294402083,
+      "n_classes_scored": 21,
+      "n_segments": 12000,
+      "n_segments_labelled": 5377,
+      "published_roc_auc": 0.915,
+      "published_cmap": 0.533,
+      "published_top1": 0.659
+    },
+    "NBP": {
+      "roc_auc": 0.9105337952685747,
+      "cmap": 0.6130060451033243,
+      "top1": 0.673469387755102,
+      "n_classes_scored": 51,
+      "n_segments": 539,
+      "n_segments_labelled": 539,
+      "published_roc_auc": 0.933,
+      "published_cmap": 0.661,
+      "published_top1": 0.724
+    }
+  }
+}
