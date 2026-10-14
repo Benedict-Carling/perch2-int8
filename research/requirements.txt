@@ -5,3 +5,7 @@ pandas==2.2.2
 scikit-learn==1.5.0
 huggingface_hub==1.27.0
 pyarrow>=17,<24
+
+# Security floors for transitive dependencies (huggingface_hub -> httpx).
+anyio>=4.14.2
+idna>=3.15
